@@ -110,7 +110,6 @@ class Relation extends Field
         $this->set('relationKey', Crypt::encryptString($key));
 
         $this->addBeforeRender(function () use ($model, $name, $key) {
-
             $append = $this->get('relationAppend');
 
             if (is_string($append)) {
