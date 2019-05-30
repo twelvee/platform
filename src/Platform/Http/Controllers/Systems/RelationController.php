@@ -19,11 +19,17 @@ class RelationController extends Controller
      */
     public function view(RelationRequest $request)
     {
-        ['model' => $model, 'name' => $name, 'key' => $key, 'scope' => $scope] = collect($request->except(['search']))->map(function ($item) {
+        [
+            'model'  => $model,
+            'name'   => $name,
+            'key'    => $key,
+            'scope'  => $scope,
+            'append' => $append,
+        ] = collect($request->except(['search']))->map(function ($item) {
             return is_null($item) ? null : Crypt::decryptString($item);
         });
 
-        /** @var Model $builder */
+        /** @var Model $model */
         $model = new $model;
         $search = $request->get('search', '');
 
@@ -34,7 +40,8 @@ class RelationController extends Controller
         $items = $model
             ->where($name, 'like', '%'.$search.'%')
             ->limit(10)
-            ->pluck($name, $key);
+            ->get()
+            ->pluck($append ?? $name, $key);
 
         return response()->json($items);
     }

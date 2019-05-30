@@ -38,9 +38,10 @@ class Relation extends Field
      * @var array
      */
     public $attributes = [
-        'class'         => 'form-control',
-        'value'         => [],
-        'relationScope' => '',
+        'class'          => 'form-control',
+        'value'          => [],
+        'relationScope'  => null,
+        'relationAppend' => null,
     ];
 
     /**
@@ -52,6 +53,7 @@ class Relation extends Field
         'relationName',
         'relationKey',
         'relationScope',
+        'relationAppend',
     ];
 
     /**
@@ -108,6 +110,15 @@ class Relation extends Field
         $this->set('relationKey', Crypt::encryptString($key));
 
         $this->addBeforeRender(function () use ($model, $name, $key) {
+
+            $append = $this->get('relationAppend');
+
+            if (is_string($append)) {
+                $append = Crypt::decryptString($append);
+            }
+
+            $text = $append ?? $name;
+
             $value = $this->get('value');
 
             if (! is_iterable($value)) {
@@ -119,10 +130,10 @@ class Relation extends Field
             }
 
             $value = collect($value)
-                ->map(function ($item) use ($name, $key) {
+                ->map(function ($item) use ($text, $key) {
                     return [
                         'id'   => $item->$key,
-                        'text' => $item->$name,
+                        'text' => $item->$text,
                     ];
                 })->toJson();
 
@@ -137,11 +148,23 @@ class Relation extends Field
      *
      * @return $this
      */
-    public function applyScope(string $scope)
+    public function applyScope(string $scope): self
     {
         $scope = lcfirst($scope);
 
         $this->set('relationScope', Crypt::encryptString($scope));
+
+        return $this;
+    }
+
+    /**
+     * @param string $append
+     *
+     * @return Relation
+     */
+    public function displayAppend(string $append): self
+    {
+        $this->set('relationAppend', Crypt::encryptString($append));
 
         return $this;
     }
