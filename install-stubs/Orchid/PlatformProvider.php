@@ -50,6 +50,7 @@ class PlatformProvider extends ServiceProvider
     {
         return ItemPermission::group(__('Systems'))
             ->addPermission('platform.systems.roles', __('Roles'))
-            ->addPermission('platform.systems.users', __('Users'));
+            ->addPermission('platform.systems.users', __('Users'))
+            ->addPermission('platform.systems.announcement', __('Announcement'));
     }
 }

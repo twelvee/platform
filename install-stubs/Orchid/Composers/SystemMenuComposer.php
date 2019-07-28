@@ -54,6 +54,13 @@ class SystemMenuComposer
                     ->permission('platform.systems.roles')
                     ->sort(1000)
                     ->title(__('A Role defines a set of tasks a user assigned the role is allowed to perform. '))
+            )
+            ->add('Tools',
+                ItemMenu::label(__('Public alert'))
+                    ->icon('icon-bulb')
+                    ->title(__('Allows you to pre-inform active users about an event.'))
+                    ->route('platform.systems.announcement')
+                    ->permission('platform.systems.announcement')
             );
     }
 }

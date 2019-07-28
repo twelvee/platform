@@ -36,6 +36,12 @@ Breadcrumbs::for('platform.systems.roles.edit', function ($trail, $role) {
     $trail->push(__('Role'), route('platform.systems.roles.edit', $role));
 });
 
+// Platform > System > Announcement
+Breadcrumbs::for('platform.systems.announcement', function ($trail) {
+    $trail->parent('platform.systems.index');
+    $trail->push(__('Announcement'), route('platform.systems.announcement'));
+});
+
 // Platform -> Example
 Breadcrumbs::for('platform.example', function ($trail) {
     $trail->parent('platform.index');

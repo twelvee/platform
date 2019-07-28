@@ -36,13 +36,6 @@ class SystemMenuComposer
                     ->slug('Tools')
                     ->icon('icon-umbrella')
                     ->sort(9000)
-            )
-            ->add('Tools',
-                ItemMenu::label(__('Public alert'))
-                    ->icon('icon-bulb')
-                    ->title(__('Allows you to pre-inform active users about an event.'))
-                    ->route('platform.systems.announcement')
-                    ->permission('platform.systems.announcement')
             );
     }
 }
