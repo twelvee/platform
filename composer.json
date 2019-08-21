@@ -1,6 +1,6 @@
 {
-  "name": "twelvee/platform",
-  "description": "Basis for back-office applications , admin panel or CMS. Refactored.",
+  "name": "orchid/platform",
+  "description": "Basis for back-office applications , admin panel or CMS.",
   "keywords": [
     "framework",
     "laravel",
@@ -17,7 +17,7 @@
   "homepage": "https://orchid.software",
   "support": {
     "issues": "https://github.com/orchidsoftware/platform/issues",
-    "source": "https://github.com/twelvee/platform",
+    "source": "https://github.com/orchidsoftware/platform",
     "docs": "https://orchid.software/en/docs",
     "email": "bliz48rus@gmail.com"
   },
