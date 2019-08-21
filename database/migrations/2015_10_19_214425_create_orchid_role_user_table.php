@@ -4,25 +4,25 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrchidRoleUsersTable extends Migration
+class CreateOrchidRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up()
     {
-        Schema::create('role_users', function (Blueprint $table) {
+        Schema::create('orchid_role_user', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('role_id');
             $table->primary(['user_id', 'role_id']);
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')
+                ->on('user')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('role_id')
                 ->references('id')
-                ->on('roles')
+                ->on('orchid_role')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -33,6 +33,6 @@ class CreateOrchidRoleUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_users');
+        Schema::dropIfExists('orchid_role_user');
     }
 }

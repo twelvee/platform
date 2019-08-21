@@ -17,7 +17,7 @@ class Announcement extends Model
      *
      * @var string
      */
-    protected $table = 'announcements';
+    protected $table = 'orchid_announcement';
 
     /**
      * @var array

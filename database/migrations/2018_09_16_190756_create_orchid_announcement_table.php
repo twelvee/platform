@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrchidAnnouncementsTable extends Migration
+class CreateOrchidAnnouncementTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOrchidAnnouncementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('announcements', function (Blueprint $table) {
+        Schema::create('orchid_announcement', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->text('content');
@@ -29,6 +29,6 @@ class CreateOrchidAnnouncementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('announcements');
+        Schema::dropIfExists('orchid_announcement');
     }
 }

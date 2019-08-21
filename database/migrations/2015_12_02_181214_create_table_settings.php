@@ -11,7 +11,7 @@ class CreateTableSettings extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('orchid_settings', function (Blueprint $table) {
             $table->string('key')->primary();
             $table->json('value');
         });
@@ -22,6 +22,6 @@ class CreateTableSettings extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('orchid_settings');
     }
 }

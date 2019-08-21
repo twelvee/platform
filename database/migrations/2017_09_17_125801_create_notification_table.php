@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNotificationsTable extends Migration
+class CreateNotificationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        if (! Schema::hasTable('notifications')) {
-            Schema::create('notifications', function (Blueprint $table) {
+        if (! Schema::hasTable('orchid_notification')) {
+            Schema::create('orchid_notification', function (Blueprint $table) {
                 $table->uuid('id')->primary();
                 $table->string('type');
                 $table->morphs('notifiable');
@@ -32,6 +32,6 @@ class CreateNotificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('orchid_notification');
     }
 }

@@ -26,7 +26,7 @@ class User extends Authenticatable implements UserInterface
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'user';
 
     /**
      * @var array

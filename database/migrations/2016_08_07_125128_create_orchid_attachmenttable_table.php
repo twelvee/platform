@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrchidAttachmentstableTable extends Migration
+class CreateOrchidAttachmenttableTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up()
     {
-        Schema::create('attachments', function (Blueprint $table) {
+        Schema::create('orchid_attachment', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
             $table->text('original_name');
@@ -39,7 +39,7 @@ class CreateOrchidAttachmentstableTable extends Migration
 
             $table->foreign('attachment_id')
                 ->references('id')
-                ->on('attachments')
+                ->on('orchid_attachment')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -51,6 +51,6 @@ class CreateOrchidAttachmentstableTable extends Migration
     public function down()
     {
         Schema::drop('attachmentable');
-        Schema::drop('attachments');
+        Schema::drop('orchid_attachment');
     }
 }
